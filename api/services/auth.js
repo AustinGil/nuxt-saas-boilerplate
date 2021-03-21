@@ -1,8 +1,12 @@
 import * as yup from 'yup';
 import { Client } from 'base-api-io';
-import { BASEIO_KEY } from '../config';
-import { User } from '../models';
-import { ConflictError, AuthorizationError } from '../utils';
+import { BASEIO_KEY } from '../config.js';
+import { User } from '../models/index.js';
+import {
+  ConflictError,
+  AuthorizationError,
+  NotFoundError,
+} from '../utils/index.js';
 
 const client = new Client(BASEIO_KEY);
 
@@ -111,6 +115,10 @@ export async function login(args) {
         .first(),
       client.sessions.authenticate(email, password),
     ]);
+
+    if (!user) {
+      throw new NotFoundError('User not found');
+    }
 
     return user;
   } catch (error) {

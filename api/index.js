@@ -1,8 +1,8 @@
 import express from 'express';
 import helmet from 'helmet';
 import pino from 'pino-http';
-import routes from './routes';
-import { NotFoundError } from './utils';
+import routes from './routes/index.js';
+import { NotFoundError } from './utils/index.js';
 
 const isProd = process.env.NODE_ENV === 'production';
 

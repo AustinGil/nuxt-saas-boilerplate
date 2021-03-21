@@ -55,6 +55,7 @@ module.exports = {
 
     'unicorn/explicit-length-check': 'off',
     'unicorn/filename-case': 'off',
+    'unicorn/import-index': 'off',
     'unicorn/no-array-reduce': 'off',
     'unicorn/no-null': 'off',
     'unicorn/no-reduce': 'off',

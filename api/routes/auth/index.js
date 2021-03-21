@@ -1,6 +1,6 @@
 import { Router } from 'express';
-import { wrapAsync } from '../../middleware';
-import { auth } from '../../services';
+import { wrapAsync } from '../../middleware/index.js';
+import { auth } from '../../services/index.js';
 
 const router = Router();
 
@@ -34,4 +34,4 @@ router.post(
   })
 );
 
-export default Router;
+export default router;

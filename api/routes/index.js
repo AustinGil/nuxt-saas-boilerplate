@@ -1,6 +1,6 @@
 import { Router } from 'express';
-import { wrapAsync } from '../middleware';
-import auth from './auth';
+import { wrapAsync } from '../middleware/index.js';
+import auth from './auth/index.js';
 
 const router = Router();
 

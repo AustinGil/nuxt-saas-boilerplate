@@ -23,9 +23,10 @@ export default {
   buildModules: [
     '@nuxtjs/composition-api',
     // https://go.nuxtjs.dev/eslint
-    '@nuxtjs/eslint-module',
+    // '@nuxtjs/eslint-module',
     // https://go.nuxtjs.dev/stylelint
     '@nuxtjs/stylelint-module',
+    // 'nuxt-vite',
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -47,7 +48,7 @@ export default {
   //   },
   // },
 
-  serverMiddleware: ['~/api/index.js'],
+  serverMiddleware: ['~/api'],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
