@@ -1,22 +1,20 @@
 <template>
-  <div>
-    <h1 class="title">
-      saas
-    </h1>
+  <header>
+    Logo
 
-    <pre>{{ user }}</pre>
-  </div>
+    <button v-if="user" @click="logout">Logout</button>
+  </header>
 </template>
 
 <script>
 import { defineComponent } from '@vue/composition-api';
-import auth from '../store/auth.js';
+import auth from '../../store/auth';
 
 export default defineComponent({
-  layout: 'authenticated',
   setup() {
     return {
       user: auth.user,
+      logout: auth.logout,
     };
   },
 });

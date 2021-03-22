@@ -1,5 +1,31 @@
 @import './html.css';
 
+#__nuxt,
+#__layout {
+  min-block-size: 100%;
+}
+
+#__layout {
+  display: grid;
+}
+
+.min-block-full {
+  min-block-size: 100%;
+}
+
+.grid {
+  display: grid;
+}
+
 .flex {
   display: flex;
 }
+
+/* @for $i from 1 to 8 {
+  .p-$i { padding: $(i)px; }
+}
+@each $item in 4, 8 {
+  .p-$(item) {
+    padding: $(item)px;
+  }
+} */

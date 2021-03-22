@@ -55,6 +55,7 @@ export default {
     postcss: {
       plugins: {
         'postcss-for': {},
+        'postcss-each': {},
       },
     },
   },

@@ -11,4 +11,5 @@ export default {
   set user(user) {
     authState.user = user;
   },
+  logout: () => (authState.user = null),
 };
