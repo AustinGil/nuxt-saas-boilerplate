@@ -32,6 +32,7 @@ module.exports = {
     'comma-dangle': ['error', 'only-multiline'],
     'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
+    'object-shorthand': 'off',
 
     'prettier/prettier': [
       'error',
@@ -58,6 +59,7 @@ module.exports = {
     'unicorn/import-index': 'off',
     'unicorn/no-array-reduce': 'off',
     'unicorn/no-null': 'off',
+    'unicorn/no-object-as-default-parameter': 'off',
     'unicorn/no-reduce': 'off',
     'unicorn/no-useless-undefined': 'off',
     'unicorn/prefer-ternary': 'off',

@@ -1,6 +1,7 @@
 import express from 'express';
 import helmet from 'helmet';
-import pino from 'pino-http';
+// import pino from 'pino-http';
+import cookieParser from 'cookie-parser';
 import routes from './routes/index.js';
 import { NotFoundError } from './utils/index.js';
 
@@ -14,9 +15,10 @@ const app = express();
 
 // Global middleware
 app.use(helmet());
+app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(pino());
+// app.use(pino());
 
 // Routes
 app.use(routes);
