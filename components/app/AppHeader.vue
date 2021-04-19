@@ -7,14 +7,13 @@
 </template>
 
 <script>
-import { defineComponent } from '@vue/composition-api';
-import auth from '../../store/auth';
+import { defineComponent, computed } from '@vue/composition-api';
 
 export default defineComponent({
-  setup() {
+  setup(props, ctx) {
     return {
-      user: auth.user,
-      logout: auth.logout,
+      user: computed(() => ctx.parent.$store.state.auth.user),
+      logout: () => ctx.parent.$store.dispatch('auth/logout'),
     };
   },
 });

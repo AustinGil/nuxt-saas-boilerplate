@@ -68,7 +68,7 @@ router.post(
 router.get(
   '/me',
   authMiddleware(),
-  wrapAsync((request, response) => {
+  wrapAsync(request => {
     const user = request.user;
     return user.toPublic();
   })

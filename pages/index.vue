@@ -9,14 +9,13 @@
 </template>
 
 <script>
-import { defineComponent } from '@vue/composition-api';
-import auth from '../store/auth.js';
+import { defineComponent, computed } from '@vue/composition-api';
 
 export default defineComponent({
   layout: 'authenticated',
-  setup() {
+  setup(props, ctx) {
     return {
-      user: auth.user,
+      user: computed(() => ctx.parent.$store.state.auth.user),
     };
   },
 });

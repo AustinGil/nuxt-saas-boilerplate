@@ -8,7 +8,7 @@ router.use('/auth', auth);
 
 router.get(
   '/',
-  wrapAsync((_, response) => {
+  wrapAsync((request, response) => {
     response.send('ok');
   })
 );

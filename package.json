@@ -30,6 +30,7 @@
     "@nuxtjs/pwa": "^3.3.5",
     "@wesleytodd/openapi": "^0.1.0",
     "base-api-io": "^2.0.0",
+    "bedrocss": "^0.0.8",
     "cookie-parser": "^1.4.5",
     "core-js": "^3.8.3",
     "dotenv": "^8.2.0",

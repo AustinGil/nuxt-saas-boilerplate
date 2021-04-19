@@ -16,16 +16,19 @@
 
 <script>
 import { defineComponent } from '@vue/composition-api';
-import auth from '../../store/auth.js';
 import { submitForm } from '../../utils';
 
 export default defineComponent({
-  setup() {
+  setup(props, ctx) {
     return {
       async login(event) {
-        const user = await submitForm(event).then(r => r.json());
-        if (user) {
-          auth.user = user;
+        try {
+          const response = await submitForm(event);
+          if (response.data) {
+            ctx.parent.$store.commit('auth/setUser', response.data);
+          }
+        } catch (error) {
+          console.log(error);
         }
       },
     };
