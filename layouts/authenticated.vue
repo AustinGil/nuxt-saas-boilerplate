@@ -6,13 +6,6 @@
       <AuthForm v-if="!user" />
       <Nuxt v-else />
     </div>
-
-    <!-- <div
-      id="snipcart"
-      data-config-modal-style="side"
-      data-api-key="NWYzZWFhMmEtOGE3Ny00NDRhLWFjNjQtYmJiOTNkNmFkYzBhNjM3NTIzOTY4MTE0MzE1NTk2"
-      hidden
-    ></div> -->
   </div>
 </template>
 

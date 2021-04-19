@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html {{ HTML_ATTRS }}>
+  <head {{ HEAD_ATTRS }}>
+    {{ HEAD }}
+  </head>
+  <body {{ BODY_ATTRS }}>
+    {{ APP }}
+
+    <div
+      id="snipcart"
+      data-config-modal-style="side"
+      data-api-key="{{ process.env.SNIPCART_PUBLIC }}"
+      hidden
+    ></div>
+  </body>
+</html>
