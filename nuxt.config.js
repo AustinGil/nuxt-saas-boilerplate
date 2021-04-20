@@ -26,7 +26,12 @@ export default {
   css: ['bedrocss', '~/assets/styles/main.css'],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [],
+  plugins: [
+    { src: '~/plugins/setup.js' },
+    // { src: '~/plugins/both-sides.js' },
+    // { src: '~/plugins/client-only.js', mode: 'client' },
+    // { src: '~/plugins/server-only.js', mode: 'server' }
+  ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,

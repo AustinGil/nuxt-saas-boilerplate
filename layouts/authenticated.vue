@@ -10,13 +10,14 @@
 </template>
 
 <script>
-import { defineComponent, computed } from '@vue/composition-api';
+import { defineComponent } from '@vue/composition-api';
+import authState from '../state/auth';
 
 export default defineComponent({
-  setup(props, ctx) {
+  setup() {
     return {
-      user: computed(() => ctx.parent.$store.state.auth.user),
-      logout: () => ctx.parent.$store.commit('auth/setUser', null),
+      user: authState.user,
+      logout: () => (authState.user = null),
     };
   },
 });

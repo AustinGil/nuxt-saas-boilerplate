@@ -17,15 +17,16 @@
 <script>
 import { defineComponent } from '@vue/composition-api';
 import { submitForm } from '../../utils';
+import authState from '../../state/auth';
 
 export default defineComponent({
-  setup(props, ctx) {
+  setup() {
     return {
       async login(event) {
         try {
           const response = await submitForm(event);
           if (response.data) {
-            ctx.parent.$store.commit('auth/setUser', response.data);
+            authState.user = response.data;
           }
         } catch (error) {
           console.log(error);
