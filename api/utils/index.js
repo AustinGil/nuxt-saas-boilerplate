@@ -8,6 +8,7 @@
  */
 export function cloneOnlyKeys(obj, keys = []) {
   return keys.reduce((next, key) => {
+    // @ts-ignore
     // eslint-disable-next-line security/detect-object-injection
     next[key] = obj[key];
     return next;

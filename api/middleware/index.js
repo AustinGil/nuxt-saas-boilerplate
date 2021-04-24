@@ -1,10 +1,14 @@
 import jwt from 'jsonwebtoken';
 import { SECRET_PHRASE, REFRESH_KEY } from '../config.js';
-import { User } from '../models/index.js';
+import { User } from '../models';
+
+/**
+ * @typedef {import('express').Handler} Handler
+ */
 
 /**
  * @param {Function} fn async handler
- * @returns {Function} Express Handler with safety
+ * @returns {Handler} Express Handler with safety
  */
 export function wrapAsync(fn) {
   const handler = (req, res, next) => {
@@ -27,7 +31,7 @@ export function wrapAsync(fn) {
 
 /**
  * @param {{ loggedIn: boolean }} [options={ loggedIn: true }]
- * @returns {Function}
+ * @returns {Handler}
  */
 export const auth = (options = { loggedIn: true }) =>
   wrapAsync(async (request, response, next) => {

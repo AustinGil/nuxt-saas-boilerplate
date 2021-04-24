@@ -17,7 +17,7 @@
 <script>
 import { defineComponent } from '@vue/composition-api';
 import { submitForm } from '../../utils';
-import authState from '../../state/auth';
+import authState, { scheduleRefresh } from '../../state/auth.js';
 
 export default defineComponent({
   setup() {
@@ -27,6 +27,7 @@ export default defineComponent({
           const response = await submitForm(event);
           if (response.data) {
             authState.user = response.data;
+            scheduleRefresh();
           }
         } catch (error) {
           console.log(error);

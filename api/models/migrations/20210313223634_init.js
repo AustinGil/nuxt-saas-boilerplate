@@ -1,6 +1,7 @@
 /** @param {import('knex')} knex */
 export const up = async knex => {
   await Promise.all([
+    // @ts-ignore
     knex.schema
       .createTable('user', t => {
         t.string('id')
@@ -16,11 +17,13 @@ export const up = async knex => {
           .notNullable()
           .unique();
         t.boolean('verified').default(false);
+        t.jsonb('meta');
         t.timestamps(false, true);
         t.timestamp('deleted_at');
       })
       .then(() => console.log('created table: user')),
 
+    // @ts-ignore
     knex.schema
       .createTable('session', t => {
         t.string('id')
@@ -30,7 +33,6 @@ export const up = async knex => {
           .notNullable()
           .references('user.id');
         t.timestamp('expires').notNullable();
-        t.string('meta').jsonb();
         t.timestamps(false, true);
       })
       .then(() => console.log('created table: session')),
@@ -39,9 +41,11 @@ export const up = async knex => {
 /** @param {import('knex')} knex */
 export const down = async knex => {
   await Promise.all([
+    // @ts-ignore
     knex.schema
       .dropTableIfExists('user')
       .then(() => console.log('dropped table: user')),
+    // @ts-ignore
     knex.schema
       .dropTableIfExists('session')
       .then(() => console.log('dropped table: session')),

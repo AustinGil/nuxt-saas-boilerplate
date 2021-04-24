@@ -1,12 +1,8 @@
 import * as yup from 'yup';
 import { Client } from 'base-api-io';
 import { BASEIO_KEY } from '../config.js';
-import { User } from '../models/index.js';
-import {
-  ConflictError,
-  AuthorizationError,
-  NotFoundError,
-} from '../utils/index.js';
+import { User } from '../models';
+import { ConflictError, AuthorizationError, NotFoundError } from '../utils';
 
 const client = new Client(BASEIO_KEY);
 

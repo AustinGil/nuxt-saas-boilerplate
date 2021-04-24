@@ -1,0 +1,43 @@
+{
+  // "files": [
+  //   "src/index.js"
+  //   "./src/types.ts"
+  // ],
+  "exclude": [
+    "node_modules",
+    ".nuxt",
+    "dist",
+    "types"
+  ],
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "~/*": [
+        "./*"
+      ],
+      "@/*": [
+        "./*"
+      ],
+      "~~/*": [
+        "./*"
+      ],
+      "@@/*": [
+        "./*"
+      ]
+    },
+    "target": "ES2019",
+    "allowJs": true,
+    "checkJs": true,
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    // "strict": true,
+    // Prevents files from being created.
+    "noEmit": true,
+    // Unless you want files (like types). Then use these
+    // "alwaysStrict": true,
+    // "emitDeclarationOnly": true,
+    // "declaration": true,
+    // "outDir": "types",
+  }
+}

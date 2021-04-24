@@ -2,8 +2,8 @@ import express from 'express';
 import helmet from 'helmet';
 // import pino from 'pino-http';
 import cookieParser from 'cookie-parser';
-import routes from './routes/index.js';
-import { NotFoundError } from './utils/index.js';
+import routes from './routes';
+import { NotFoundError } from './utils';
 
 const isProd = process.env.NODE_ENV === 'production';
 

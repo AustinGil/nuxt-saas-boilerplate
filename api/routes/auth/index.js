@@ -1,9 +1,12 @@
 import { Router } from 'express';
 import jwt from 'jsonwebtoken';
 import { SECRET_PHRASE, REFRESH_KEY, AUTH_KEY } from '../../config.js';
-import { wrapAsync, auth as authMiddleware } from '../../middleware/index.js';
-import { auth } from '../../services/index.js';
+import { wrapAsync, auth as authMiddleware } from '../../middleware';
+import { auth } from '../../services';
+import { User } from '../../models';
 
+const AUTH_EXPIRATION = '30m';
+const REFRESH_EXPIRATION = '7d';
 const COOKIE_OPTS = {
   maxAge: 360000,
   sameSite: true,
@@ -27,10 +30,10 @@ router.post(
     });
 
     const authToken = jwt.sign({ user: user }, SECRET_PHRASE, {
-      expiresIn: '30m',
+      expiresIn: AUTH_EXPIRATION,
     });
     const refreshToken = jwt.sign({ userId: user.id }, SECRET_PHRASE, {
-      expiresIn: '7d',
+      expiresIn: REFRESH_EXPIRATION,
     });
 
     response.cookie(AUTH_KEY, authToken, COOKIE_OPTS);
@@ -48,10 +51,10 @@ router.post(
       const user = await auth.login({ email, password });
 
       const authToken = jwt.sign({ user: user }, SECRET_PHRASE, {
-        expiresIn: '30m',
+        expiresIn: AUTH_EXPIRATION,
       });
       const refreshToken = jwt.sign({ userId: user.id }, SECRET_PHRASE, {
-        expiresIn: '7d',
+        expiresIn: REFRESH_EXPIRATION,
       });
 
       response.cookie(AUTH_KEY, authToken, COOKIE_OPTS);
@@ -74,10 +77,32 @@ router.get(
   })
 );
 
+router.get(
+  '/refresh',
+  wrapAsync(async (request, response) => {
+    try {
+      const refreshToken = request.cookies[REFRESH_KEY];
+      if (!refreshToken) {
+        return;
+      }
+
+      const { userId } = jwt.verify(refreshToken, SECRET_PHRASE);
+
+      const user = await User.query().findById(userId);
+
+      const authToken = jwt.sign({ user: user }, SECRET_PHRASE, {
+        expiresIn: AUTH_EXPIRATION,
+      });
+      response.cookie(AUTH_KEY, authToken, COOKIE_OPTS);
+
+      return user.toPublic();
+    } catch {}
+  })
+);
+
 router.post(
   '/logout',
-  wrapAsync(async (request, response) => {
-    await Promise.resolve();
+  wrapAsync((request, response) => {
     // TODO: remove session in db
     response.clearCookie(AUTH_KEY, COOKIE_OPTS);
     response.clearCookie(REFRESH_KEY, COOKIE_OPTS);

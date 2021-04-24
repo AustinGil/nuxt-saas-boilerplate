@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg">
+	<defs>
+		<symbol id="icon-home" viewBox="0 0 32 32">
+			<path d="M32 19l-6-6V4h-4v5l-6-6L0 19v1h4v10h10v-6h4v6h10V20h4z" />
+		</symbol>
+
+		<symbol id="icon-stack" viewBox="0 0 32 32">
+			<path
+				d="M32 10L16 2 0 10l16 8 16-8zM16 5l11 5-11 5-11-5 11-5zm13 9l3 2-16 8-16-8 3-2 13 7zm0 6l3 2-16 8-16-8 3-2 13 7z" />
+		</symbol>
+		
+		<symbol id="icon-pencil" viewBox="0 0 32 32">
+			<path d="M27 0a5 5 0 014 8l-2 2-7-7 2-2 3-1zM2 23l-2 9 9-2 19-18-7-7L2 23zm20-12L8 25l-1-1 14-14 1 1z" />
+		</symbol>
+	</defs>
+</svg>

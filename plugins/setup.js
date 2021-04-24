@@ -1,6 +1,6 @@
 import { onGlobalSetup, useContext, useAsync } from '@nuxtjs/composition-api';
 import authState from '../state/auth.js';
-import { http } from '../utils/index.js';
+import { http } from '../utils';
 
 export default () => {
   onGlobalSetup(() => {
